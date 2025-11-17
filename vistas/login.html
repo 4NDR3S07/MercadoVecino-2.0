@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Mercado Vecino</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="icon" href="../Assets/imagenes/logo.drawio.png" type="image/png">
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <h2>Iniciar Sesión</h2>
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="correo">Correo Electrónico</label>
+                    <input type="email" id="correo" name="correo" required maxlength="120" autocomplete="email" placeholder="tu@correo.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" required minlength="6" autocomplete="current-password" placeholder="Tu contraseña">
+                </div>
+                
+                <div id="message" class="message"></div>
+                
+                <button type="submit" id="submitBtn" class="btn-submit">
+                    <span class="btn-text">Iniciar Sesión</span>
+                    <span class="loading" style="display: none;">Iniciando...</span>
+                </button>
+            </form>
+            
+            <div class="form-footer">
+                <p class="register-link">
+                    ¿No tienes cuenta? <a href="../vistas/registrar.html">Crear cuenta</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../js/login.js"></script>
+</body>
+</html>

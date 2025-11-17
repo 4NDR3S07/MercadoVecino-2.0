@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Mercado Vecino</title>
+    <link rel="stylesheet" href="../css/registrar.css">
+    <link rel="icon" href="../Assets/imagenes/logo.drawio.png" type="image/png">
+</head>
+<body>
+    <div class="container">
+        <div class="register-box">
+            <h2> Crear Cuenta</h2>
+            <form id="registerForm" class="register-form">
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo *</label>
+                    <input type="text" id="nombre" name="nombre" required maxlength="60" autocomplete="name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="correo">Correo Electrónico *</label>
+                    <input type="email" id="correo" name="correo" required maxlength="120" autocomplete="email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" maxlength="20" placeholder="Opcional" autocomplete="tel">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Contraseña *</label>
+                    <input type="password" id="password" name="password" required minlength="6" autocomplete="new-password">
+                    <small>Mínimo 6 caracteres</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirm_password">Confirmar Contraseña *</label>
+                    <input type="password" id="confirm_password" name="confirm_password" required autocomplete="new-password">
+                </div>
+                
+                <div class="form-group">
+                    <label for="rol">Tipo de Usuario</label>
+                    <select id="rol" name="rol">
+                        <option value="COMPRADOR">🛒 Comprador</option>
+                        <option value="VENDEDOR">🏪 Vendedor</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="direccion">Dirección</label>
+                    <textarea id="direccion" name="direccion" rows="3" maxlength="255" placeholder="Opcional - Ingresa tu dirección completa" autocomplete="address-line1"></textarea>
+                </div>
+                
+                <div id="message" class="message"></div>
+                
+                <button type="submit" id="submitBtn" class="btn-submit">
+                    <span class="btn-text">Crear Cuenta</span>
+                    <span class="loading" style="display: none;">⟳ Creando...</span>
+                </button>
+            </form>
+            
+            <p class="login-link">
+                ¿Ya tienes cuenta? <a href="../vistas/login.html">Inicia Sesión</a>
+            </p>
+        </div>
+    </div>
+    
+    <script src="../js/registrar.js"></script>
+</body>
+</html>

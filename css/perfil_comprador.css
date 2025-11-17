@@ -1,0 +1,116 @@
+header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #000000;
+  background: #fff;
+}
+
+header .logo img {
+  width: 40px;
+  height: auto; 
+  margin-right: 15px;
+}
+
+header .buscador {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+header .btn-filtro {
+  margin-right: 10px;
+  padding: 6px 12px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #fff;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #ffffff;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #000000;
+  background: #fff;
+}
+
+header .logo img {
+  width: 40px;
+  height: auto; 
+  margin-right: 15px;
+}
+
+header .buscador {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+
+main {
+  display: grid;
+  grid-template-columns: 100px 1fr 300px;
+  flex: 1;
+}
+
+.lateral-iz {
+  border-right: 1px solid #000000;
+  padding: 10px;
+  background: #fafafa;
+}
+
+.lateral-iz ul li a {
+    display:block;
+    margin: 10px 1;
+    text-decoration: none; /*quita la linea visual del link*/
+    color: #000;
+    padding: 7px;
+
+}
+
+.lateral-iz:hover{
+    background: #8f8c8c;
+}
+
+/* ===== SECCION CENTRAL ===== */
+.centro-perfil{
+    background-color: #a64fd8;
+}
+
+
+
+
+.lateral-der {
+  border-left: 1px solid #000000;
+  padding: 20px;
+  background: #fafafa;
+}
+
+.lateral-der h2 {
+  margin-bottom: 10px;
+}
+
+.lateral-der h3 {
+  margin-top: 15px;
+  font-size: 15px;
+  color: #1b1818;
+}

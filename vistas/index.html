@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Principal - MercadoVecino</title>
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="icon" href="../Assets/imagenes/logo.drawio.png" type="image/png">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="../css/Assets/imagenes/logo.drawio.png" alt="Logo MercadoVecino">
+    </div>
+    <input type="text" placeholder="Buscar productos..." class="buscador">
+    <select name="filtro" id="filtro"> 
+        <option value="">Filtrar por:</option>
+        <option value="categoria">Categoría</option>
+        <option value="precio">Precio</option>
+        <option value="fecha">Más recientes</option>
+        <option value="disponibilidad">Disponibilidad</option>
+    </select>
+    <div class="acciones" id="headerActions">
+      <!-- Los botones se cargarán dinámicamente según el estado de sesión -->
+      <button class="button-iniciar" onclick="location.href='login.html'">Iniciar Sesión</button>
+      <button class="button-registrar" onclick="location.href='registrar.html'">Registrarse</button>
+    </div>
+  </header>
+
+  <main>
+    <aside class="menu-lateral-iz">
+      <nav>
+        <ul>
+          <li><a href="perfil_comprador.html" class="perfil">👤 Gestión de Perfil</a></li>
+          <li><a href="carrito_compras.html">🛒 Carrito de Compras</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <section class="contenido">
+      <div id="userWelcome" style="display: none;">
+        <!-- Mensaje de bienvenida para usuarios logueados -->
+      </div>
+      
+      <h2>Productos Destacados</h2>
+      <div id="productosContainer">
+        <!-- Aquí se cargarán los productos -->
+        <p>Cargando productos...</p>
+      </div>
+    </section>
+
+    <aside class="lateral-der">
+      <h2>¿Cómo funciona?</h2>
+      <br>
+      <div class="info-section">
+        <h3>Explora el catálogo</h3>
+        <p>Navega por las categorías o utiliza el buscador para encontrar productos y servicios disponibles en tu zona.</p>
+      </div>
+
+      <div class="info-section">
+        <h3>Filtra y descubre</h3>
+        <p>Ordena los resultados según tu preferencia: cercanía, precio, popularidad o disponibilidad.</p>
+      </div>
+
+      <div class="info-section">
+        <h3>Agrega a tu carrito o favoritos</h3>
+        <p>Selecciona los productos que te interesen y guárdalos en el carrito para comprar de inmediato o en favoritos para más tarde.</p>
+      </div>
+
+      <div class="info-section">
+        <h3>Recibe soporte cuando lo necesites</h3>
+        <p>Si tienes dudas, accede a la sección de ayuda para recibir asistencia.</p>
+      </div>
+    </aside>
+  </main>
+
+  <script src="../js/index.js"></script>
+</body>
+</html>
