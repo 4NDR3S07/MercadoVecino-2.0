@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/carrito_compras.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='imagenes/logo.drawio.png') }}" type="image/png"></head>
+</head>
+<body>
+    <header class="topbar">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='imagenes/logo.drawio.png') }}" alt="Logo" class="logo-img">
+        </div>
+        <div class ="actions">
+            <a href="{{ url_for('logout') }}" class="btn logout">Cerrar Sesión</a>
+        </div>
+    </header>
+
+    <main class="contenido">
+
+    <div class="contenedor-principal">
+        <!-- Sidebar -->
+        <aside class="menu-lateral-iz">
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">🏠 Página Principal</a></li>
+                    <li><a href="{{ url_for('perfil_comprador') }}">👤 Gestión de Perfil</a></li>
+                    <li><a href="#"> ⭐Favoritos</a></li>
+                    <li><a href="#"> 📖 Historial de Compras</a></li>
+                    <li><a href="{{ url_for('carrito_compras') }}">🛒 Carrito de Compras</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Contenido principal -->
+        
+
+
+            <div class="carrito">
+                <section class="detalle-compras">
+                    <h2>Compra</h2>
+
+                    <div class="item-compra">
+                        <img src="{{ url_for('static', filename='imagenes/zapato_negro.png') }}" alt="Zapato negro">
+                        <div class="info">
+                            <p class="nombre">Zapatos Tenis By Cuadrado Color Negro Para Hombre</p>
+                            <p class="precio">$250.000,00</p>
+                        </div>
+                        <div class="cantidad">
+                            <button>-</button>
+                            <span>1</span>
+                            <button>+</button>
+                        </div>
+                        <button class="eliminar">✕</button>
+                    </div>
+
+                    <div class="item-compra">
+                        <img src="{{ url_for('static', filename='imagenes/bufanda_roja.png') }}" alt="Bufanda roja">
+                        <div class="info">
+                            <p class="nombre">Bufanda de lana roja con diseño de espiga para invierno</p>
+                            <p class="precio">$35.900,00</p>
+                        </div>
+                        <div class="cantidad">
+                            <button>-</button>
+                            <span>2</span>
+                            <button>+</button>
+                        </div>
+                        <button class="eliminar">✕</button>
+                    </div>
+                </section>
+
+                <section class="resumen-compra">
+                    <h3>Resumen de la Compra</h3>
+                    <p>Subtotal: <span>$321.800,00</span></p>
+                    <p>Envío: <span>$2.800,00</span></p>
+                    <p><strong>Total:</strong> <span>$324.600,00</span></p>
+                    <p>Total de Artículos: <span>3</span></p>
+                    <button class="actualizar">Actualizar mi Compra</button>
+                </section>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

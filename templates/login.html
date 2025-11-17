@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Mercado Vecino</title>
+
+    <!-- CSS desde static -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='imagenes/logo.drawio.png') }}" type="image/png">
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <h2>Iniciar Sesión</h2>
+            <form id="loginForm" class="login-form" method="POST" action="{{ url_for('login') }}">
+                <div class="form-group">
+                    <label for="correo">Correo Electrónico</label>
+                    <input type="email" id="correo" name="correo" required maxlength="120" autocomplete="email" placeholder="tu@correo.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="contraseña">Contraseña</label>
+                    <input type="password" id="contraseña" name="contraseña" required minlength="6" autocomplete="current-password" placeholder="Tu contraseña">
+                </div>
+                
+                <div id="message" class="message"></div>
+                
+                <button type="submit" id="submitBtn" class="btn-submit">
+                    <span class="btn-text">Iniciar Sesión</span>
+                    <span class="loading" style="display: none;">Iniciando...</span>
+                </button>
+            </form>
+            
+            <div class="form-footer">
+                <p class="register-link">
+                    <!-- Corregido: registro → registrar -->
+                    ¿No tienes cuenta? <a href="{{ url_for('registrar') }}">Crear cuenta</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JS desde static -->
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+</body>
+</html>

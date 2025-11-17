@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Mercado Vecino</title>
+
+    <!-- CSS desde static -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/registrar.css') }}">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='imagenes/logo.drawio.png') }}" type="image/png">
+</head>
+<body>
+    <div class="container">
+        <div class="register-box">
+            <h2>Crear Cuenta</h2>
+            <!-- Corregido: registro → registrar -->
+            <form id="registerForm" class="register-form" method="POST" action="{{ url_for('registrar') }}">
+                <div class="form-group">
+                    <label for="nombre">Nombres *</label>
+                    <input type="text" id="nombre" name="nombre" required maxlength="60" autocomplete="name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="apellido">Apellidos *</label>
+                    <input type="text" id="apellido" name="apellido" required maxlength="60" autocomplete="family-name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="correo">Correo Electrónico *</label>
+                    <input type="email" id="correo" name="correo" required maxlength="120" autocomplete="email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="telefono">Teléfono *</label>
+                    <input type="tel" id="telefono" name="telefono" maxlength="20" autocomplete="tel">
+                </div>
+                
+                <div class="form-group">
+                    <label for="contraseña">Contraseña *</label>
+                    <input type="password" id="contraseña" name="contraseña" required minlength="6" autocomplete="new-password">
+                    <small>Mínimo 6 caracteres</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirm_password">Confirmar Contraseña *</label>
+                    <input type="password" id="confirm_password" name="confirm_password" required autocomplete="new-password">
+                </div>
+                
+                <div class="form-group">
+                    <label for="rol">Tipo de Usuario</label>
+                    <select id="rol" name="rol">
+                        <option value="cliente">🛒 Comprador</option>
+                        <option value="vendedor">🏪 Vendedor</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="direccion">Dirección</label>
+                    <textarea id="direccion" name="direccion" rows="3" maxlength="255" placeholder="Ingresa tu dirección completa" autocomplete="address-line1"></textarea>
+                </div>
+                
+                <div id="message" class="message"></div>
+                
+                <button type="submit" id="submitBtn" class="btn-submit">
+                    <span class="btn-text">Crear Cuenta</span>
+                    <span class="loading" style="display: none;">⟳ Creando...</span>
+                </button>
+            </form>
+            
+            <p class="login-link">
+                ¿Ya tienes cuenta? <a href="{{ url_for('login') }}">Inicia Sesión</a>
+            </p>
+        </div>
+    </div>
+    
+    <!-- JS desde static -->
+    <script src="{{ url_for('static', filename='js/registrar.js') }}"></script>
+</body>
+</html>

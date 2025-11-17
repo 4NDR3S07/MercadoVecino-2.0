@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil Comprador</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/perfil_comprador.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='imagenes/logo.drawio.png') }}" type="image/png"></head>
+<body>
+    <!-- Barra superior -->
+    <header class="topbar">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='imagenes/logo.drawio.png') }}" alt="Logo" class="logo-img">
+        </div>
+        <div class="actions">
+            <a href="{{ url_for('logout') }}" class="btn logout">Cerrar Sesión</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <ul>
+                <li><a href="{{ url_for('index') }}"> 🏠 Página Principal</a></li>
+                <li><a href="#">⭐ Favoritos</a></li>
+                <li><a href="#">📖 Historial de Compras</a></li>
+                <li><a href="{{ url_for('carrito_compras') }}">🛒 Carrito de Compras</a></li>
+            </ul>
+        </aside>
+
+        <!-- Contenido principal -->
+        <section class="profile">
+            <div class="profile-header">
+                <!-- Mostrar foto de perfil -->
+                <img src="{{ url_for('static', filename=session.get('user_foto', 'imagenes/user.png')) }}" 
+                     alt="Foto de perfil" class="profile-pic">
+                <h2>Foto de Perfil</h2>
+            </div>
+
+            <form class="profile-form">
+                <label>Nombre de Usuario</label>
+                <input type="text" value="{{ session.get('user_name', '') }} {{ session.get('user_lastname', '') }}" readonly>
+
+                <label>Correo Electrónico</label>
+                <input type="text" value="{{ session.get('user_email', 'correo@ejemplo.com') }}" readonly>
+
+                <label>Número de Contacto</label>
+                <input type="text" value="{{ session.get('user_phone', '+57 000 000 0000') }}" readonly>
+
+                <label>Dirección de Entrega</label>
+                <input type="text" value="{{ session.get('user_address', 'No registrada') }}" readonly>
+            </form>
+            <br>            
+
+            <!-- Botón para abrir modal -->
+             <div class="edit-">
+                <button type="button" class="edit" onclick="openModal()">Editar Perfil</button>
+             </div>
+            
+        </section>
+
+        <!-- Lateral derecho -->
+        <aside class="help">
+            <h3>¿Cómo funciona?</h3>
+            <p><strong>Explora el catálogo</strong><br>Navega por categorías o usa el buscador para encontrar productos.</p>
+            <p><strong>Filtra y descubre</strong><br>Ordena resultados por cercanía, precio o popularidad.</p>
+            <p><strong>Agrega a tu carrito o favoritos</strong><br>Guarda productos en el carrito o favoritos.</p>
+            <p><strong>Recibe soporte</strong><br>Accede a la sección de ayuda si tienes dudas.</p>
+        </aside>
+    </main>
+
+    <!-- Modal para editar perfil -->
+    <div id="editModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h3>Editar Perfil</h3>
+        <form method="POST" action="{{ url_for('editar_perfil') }}" enctype="multipart/form-data">
+            <label>Foto de Perfil</label>
+            <input type="file" name="foto">
+
+            <label>Nombre</label>
+            <input type="text" name="nombre" value="{{ session['user_name'] }}">
+
+            <label>Apellido</label>
+            <input type="text" name="apellido" value="{{ session['user_lastname'] }}">
+
+            <label>Correo</label>
+            <input type="text" name="correo" value="{{ session.get('user_email') }}">
+
+            <label>Teléfono</label>
+            <input type="text" name="telefono" value="{{ session.get('user_phone') }}">
+
+            <label>Dirección</label>
+            <input type="text" name="direccion" value="{{ session.get('user_address') }}">
+
+            <button type="submit" class="btn">Guardar Cambios</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- JS para modal -->
+    <script>
+    function openModal() {
+        document.getElementById('editModal').style.display = 'flex';
+    }
+    function closeModal() {
+        document.getElementById('editModal').style.display = 'none';
+    }
+    </script>
+</body>
+</html>
