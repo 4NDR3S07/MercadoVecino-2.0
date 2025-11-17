@@ -25,6 +25,13 @@ def index():
     """Página principal"""
     return render_template('index.html')
 
+@app.route('/inicio_vendedor')
+def index_vendedor():
+    if 'user_id' not in session or session.get('user_role') != 'VENDEDOR':
+        flash('No tienes permiso para acceder a esta página', 'error')
+        return redirect(url_for('login'))
+    
+    return render_template('index_vendedor.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -53,6 +60,12 @@ def login():
 
                 flash('Inicio de sesión exitoso', 'success')
                 return redirect(url_for('perfil_comprador'))
+                
+                if user['rol'] == 'VENDEDOR':
+                    return redirect(url_for('index_vendedor'))
+                else:
+                    return redirect(url_for('index'))
+
 
         flash('Credenciales incorrectas', 'error')
 
@@ -201,6 +214,45 @@ def perfil_comprador():
 
     return render_template('perfil_comprador.html')
 
+@app.route('/perfil_vendedor')
+def perfil_vendedor():
+    if 'user_id' not in session or session.get('user_role') != 'VENDEDOR':
+        flash('No tienes permiso para acceder a esta página', 'error')
+        return redirect(url_for('login'))
+
+    user_id = session['user_id']
+
+    query = 'SELECT * FROM usuarios WHERE id_usuario = %s'
+    result = db.execute_query(query, (user_id,))
+
+    if not result or len(result) == 0:
+        flash('Usuario no encontrado', 'error')
+        return redirect(url_for('index'))
+
+    vendedor = result[0]  # suponiendo que execute_query devuelve lista de dicts
+
+    return render_template('perfil_vendedor.html', vendedor=vendedor)
+
+
+@app.route('/guardar_perfil_vendedor', methods=['POST'])
+def guardar_perfil_vendedor():
+    if 'user_id' not in session or session.get('user_role') != 'VENDEDOR':
+        flash('No tienes permiso para realizar esta acción', 'error')
+        return redirect(url_for('login'))
+
+    user_id = session['user_id']
+    # Aquí obtienes los datos del formulario
+    nombre = request.form.get('nombre')
+    apellido = request.form.get('apellido')
+    correo = request.form.get('correo')
+    telefono = request.form.get('telefono')
+    direccion = request.form.get('direccion')
+
+    # Similar a editar_perfil(), haces la actualización en la base de datos
+    # Código para actualizar en la base de datos...
+
+    flash('Perfil de vendedor actualizado correctamente', 'success')
+    return redirect(url_for('perfil_vendedor'))
 
 # ----------------- Otras rutas -----------------
 
@@ -252,6 +304,15 @@ def api_productos():
 
     return jsonify(productos_list)
 
+@app.route('/stock')
+def stock():
+    """Página para que el vendedor gestione su stock"""
+    if 'user_id' not in session or session.get('user_role') != 'VENDEDOR':
+        flash('No tienes permiso para acceder a esta página', 'error')
+        return redirect(url_for('login'))
+
+    # Aquí más adelante puedes cargar los productos del vendedor desde la base de datos
+    return render_template('stock.html')
 
 # ----------------- Inicialización -----------------
 

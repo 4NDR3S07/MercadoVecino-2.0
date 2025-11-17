@@ -17,6 +17,41 @@
         </div>
     </header>
 
+  <!-- Modal de confirmación para usuarios no logueados -->
+  <div id="loginModal" class="modal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">
+    <div class="modal-content" style="background-color: #fefefe; margin: 15% auto; padding: 20px; border-radius: 10px; width: 300px; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+      <h3 style="margin-bottom: 15px; color: #333;">127.0.0.1:5000 dice</h3>
+      <p style="margin-bottom: 20px; color: #666;">Debes iniciar sesión para agregar productos al carrito</p>
+      <button id="acceptModal" style="background-color: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 14px;">Aceptar</button>
+    </div>
+  </div> 
+
+  <header>
+    <div class="logo">
+      <img src="{{ url_for('static', filename='imagenes/logo.drawio.png') }}" alt="Logo MercadoVecino">
+    </div>
+    <input type="text" placeholder="Buscar productos..." class="buscador">
+    <select name="filtro" id="filtro">
+         <option value="">Filtrar por:</option>
+        <option value="categoria">Categoría</option>
+        <option value="precio">Precio</option>
+        <option value="fecha">Más recientes</option>
+        <option value="disponibilidad">Disponibilidad</option>
+    </select>
+    <div class="acciones" id="headerActions">
+      <!-- AQUÍ ESTÁ EL CAMBIO PRINCIPAL -->
+      {% if session.get('user_id') %}
+        <!-- Usuario logueado - mostrar nombre y botón de logout -->
+        <span style="color: white; margin-right: 15px;">¡Hola, {{ session.get('user_name') }}!</span>
+        <a href="{{ url_for('logout') }}" class="button-iniciar" onclick="return confirm('¿Estás seguro de cerrar sesión?')">Cerrar Sesión</a>
+      {% else %}
+        <!-- Usuario no logueado - mostrar botones de login y registro -->
+        <a href="{{ url_for('login') }}" class="button-iniciar">Iniciar Sesión</a>
+        <a href="{{ url_for('registrar') }}" class="button-registrar">Registrarse</a>
+      {% endif %}
+    </div>
+  </header>
+
     <main class="container">
         <!-- Sidebar -->
         <aside class="sidebar">
@@ -27,6 +62,12 @@
                 <li><a href="{{ url_for('carrito_compras') }}">🛒 Carrito de Compras</a></li>
             </ul>
         </aside>
+                <li><a href="{{ url_for('carrito_compras') }}">🛒 Carrito de Compras</a></li>
+                <li><a href="#">⭐ Favoritos</a></li>
+                <li><a href="#">📖 Historial de Compras</a></li>
+            </ul>
+        </aside>
+        
 
         <!-- Contenido principal -->
         <section class="profile">
@@ -40,6 +81,11 @@
             <form class="profile-form">
                 <label>Nombre de Usuario</label>
                 <input type="text" value="{{ session.get('user_name', '') }} {{ session.get('user_lastname', '') }}" readonly>
+                <label>Nombres de Usuario</label>
+                <input type="text" value="{{ session.get('user_name', '') }}" readonly>
+
+                <label>Apellidos de Usuario</label>
+                <input type="text" value="{{ session.get('user_lastname', '') }}" readonly>
 
                 <label>Correo Electrónico</label>
                 <input type="text" value="{{ session.get('user_email', 'correo@ejemplo.com') }}" readonly>
@@ -70,6 +116,7 @@
     </main>
 
     <!-- Modal para editar perfil -->
+<!-- Modal para editar perfil -->
     <div id="editModal" class="modal">
       <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
@@ -91,6 +138,19 @@
             <input type="text" name="telefono" value="{{ session.get('user_phone') }}">
 
             <label>Dirección</label>
+            <label>Nombres de Usuario</label>
+            <input type="text" name="nombre" value="{{ session['user_name'] }}">
+
+            <label>Apellidos de Usuario</label>
+            <input type="text" name="apellido" value="{{ session['user_lastname'] }}">
+
+            <label>Correo Electrónico</label>
+            <input type="text" name="correo" value="{{ session.get('user_email') }}">
+
+            <label>Número de Contacto</label>
+            <input type="text" name="telefono" value="{{ session.get('user_phone') }}">
+
+            <label>Dirección de Entrega</label>
             <input type="text" name="direccion" value="{{ session.get('user_address') }}">
 
             <button type="submit" class="btn">Guardar Cambios</button>
@@ -107,5 +167,57 @@
         document.getElementById('editModal').style.display = 'none';
     }
     </script>
+        </section>
+
+        <aside class="lateral-der">
+      <h2>¿Cómo funciona?</h2>
+      <br>
+      <div class="info-section">
+        <h3>Explora el catálogo</h3>
+        <p>Navega por las categorías o utiliza el buscador para encontrar productos y servicios disponibles en tu zona.</p>
+      </div>
+
+      <div class="info-section">
+        <h3>Filtra y descubre</h3>
+        <p>Ordena los resultados según tu preferencia: cercanía, precio, popularidad o disponibilidad.</p>
+      </div>
+
+      <div class="info-section">
+        <h3>Agrega a tu carrito o favoritos</h3>
+        <p>Selecciona los productos que te interesen y guárdalos en el carrito para comprar de inmediato o en favoritos para más tarde.</p>
+      </div>
+
+      <div class="info-section">
+        <h3>Recibe soporte cuando lo necesites</h3>
+        <p>Si tienes dudas, accede a la sección de ayuda para recibir asistencia.</p>
+      </div>
+    </aside>
+    </main>
+
+      <!-- JS -->
+  <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+  
+  <!-- Funciones adicionales para navegación -->
+  <script>
+    function irAPerfil() {
+      const userWelcome = document.getElementById('userWelcome');
+      if (!userWelcome) {
+        alert('Debes iniciar sesión para acceder a tu perfil');
+        window.location.href = '/login';
+      } else {
+        window.location.href = '/perfil_comprador';
+      }
+    }
+    
+    function irACarrito() {
+      const userWelcome = document.getElementById('userWelcome');
+      if (!userWelcome) {
+        alert('Debes iniciar sesión para acceder al carrito');
+        window.location.href = '/login';
+      } else {
+        window.location.href = '/carrito_compras';
+      }
+    }
+  </script>
 </body>
 </html>

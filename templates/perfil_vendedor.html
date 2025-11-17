@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Perfil Vendedor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/perfil_vendedor.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="avatar">
+                <i class="user-icon">&#128100;</i>
+            </div>
+            <button class="btn-edit">Cambiar Fondo</button>
+        </header>
+        <form action="{{ url_for('guardar_perfil_vendedor') }}" method="POST">
+            <fieldset>
+                <legend>Información Personal</legend>
+                <label for="local">Nombre del Local *</label>
+                <input type="text" id="local" name="local" placeholder="DominioPizzal" value="{{ vendedor.nombre_local or '' }}" required />
+                
+                <label for="nombre">Nombre Completo *</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Usuario" value="{{ vendedor.nombre or '' }}" required />
+
+                <label for="descripcion">Descripción del Local *</label>
+                <textarea id="descripcion" name="descripcion" rows="4" placeholder="Somos una pizzería artesanal...">{{ vendedor.descripcion_local or '' }}</textarea>
+            </fieldset>
+
+            <fieldset>
+                <legend>Información de Contacto</legend>
+                <label for="correo">Correo Electrónico *</label>
+                <input type="email" id="correo" name="correo" placeholder="info@mercadovecino.com" value="{{ vendedor.correo or '' }}" required />
+
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="+57 300 123 4567" value="{{ vendedor.telefono or '' }}" />
+
+                <label for="direccion">Dirección del Local *</label>
+                <input type="text" id="direccion" name="direccion" placeholder="Carrera 12b #90-124" value="{{ vendedor.direccion or '' }}" required />
+            </fieldset>
+
+            <button type="submit" class="btn-submit">Guardar</button>
+        </form>
+    </div>
+</body>
+</html>

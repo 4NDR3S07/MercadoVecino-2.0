@@ -23,6 +23,23 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 12px 30px;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: white;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -45,6 +62,68 @@ body {
 
 .actions .btn.logout:hover {
     background: #6406bd;
+.logo img {
+    height: 40px;
+    width: auto;
+}
+
+.buscador {
+    flex: 1;
+    max-width: 700px;
+    padding: 10px 15px;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.buscador:focus {
+    outline: none;
+    border-color: #667eea;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.3px;
+    transform: translateY(-2px);
+}
+
+#filtro {
+    padding: 10px 15px;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.acciones {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.button-logout {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.button-logout:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.3px;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px #667eea66;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-info span {
+    font-weight: 600;
+    color: #2c3e50;
 }
 
 /* ======= LAYOUT PRINCIPAL ======= */
@@ -63,6 +142,7 @@ body {
     background: white;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
     padding: 20px;
     height: fit-content;
 }
@@ -73,6 +153,7 @@ body {
 
 .sidebar li {
     margin: 12px 0;
+    margin-bottom: 10px;
 }
 
 .sidebar a {
@@ -88,6 +169,21 @@ body {
 .sidebar a:hover {
     background: #f8f9fa;
     color: #667eea;
+    padding: 12px 15px;
+    border-radius: 6px;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.sidebar a:hover {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.3px;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px #667eea66;
 }
 
 /* ======= PERFIL ======= */
@@ -96,6 +192,10 @@ body {
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    padding: 30px;
+    min-height: 600px;
 }
 
 .profile-header {
@@ -111,6 +211,61 @@ body {
     border: 2px solid #9c29e9;
     object-fit: cover;
 }
+
+    border: 2px solid #764ba2;
+    object-fit: cover;
+}
+
+/* ======= EDITAR FORMULARIO PERFIL ======= */
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.modal-content label {
+    color: #555;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #e1e5e9;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: inherit;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: #f8f9fa;
+}
+
+.modal-content input:focus {
+    outline: none;
+    border-color: #667eea;
+    background-color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+}
+
+.modal-content h2 {
+    text-align: left;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.modal-content h3 {
+    text-align: left;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
 
 /* ======= FORMULARIO PERFIL ======= */
 .profile-form {
@@ -178,4 +333,198 @@ body {
     
     /* 💡 Garantiza que no se vea nada detrás */
     background-clip: padding-box;   
+    gap: 8px;
+}
+
+.profile-form label {
+    color: #555;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.profile-form input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #e1e5e9;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: inherit;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: #f8f9fa;
+}
+
+.profile-form input:focus {
+    outline: none;
+    border-color: #667eea;
+    background-color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+}
+
+/* Botón Guardar */
+.btn{
+    width: 30%;
+    padding: 16px 24px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.3px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px #667eea66;
+}
+
+/* Botón Editar */
+.edit {
+    width: 20%;
+    padding: 16px 24px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.3px;
+}
+
+.edit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px #667eea66;
+}
+
+/* Lateral derecho */
+.lateral-der {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    padding: 25px;
+    height: fit-content;
+}
+
+.lateral-der h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.info-section {
+    margin-bottom: 25px;
+}
+
+.info-section h3 {
+    color: #34495e;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.info-section p {
+    color: #7f8c8d;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.profile {
+    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar {
+    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lateral-der {
+    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    main {
+        grid-template-columns: 200px 1fr 280px;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 992px) {
+    main {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .menu-lateral-iz {
+        order: 3;
+    }
+    
+    .lateral-der {
+        order: 2;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    .acciones {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .buscador {
+        max-width: 100%;
+    }
+    
+    main {
+        padding: 0 15px;
+    }
+    
+    .productos-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .vendor-options, .buyer-options {
+        flex-direction: column;
+    }
 }

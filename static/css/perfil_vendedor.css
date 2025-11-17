@@ -1,0 +1,123 @@
+/* Reset y base */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f6f9;
+}
+
+.container {
+    max-width: 600px;
+    background: white;
+    margin: 40px auto;
+    padding: 20px 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 12px rgb(0 0 0 / 0.1);
+}
+
+/* Header con gradiente y avatar */
+header {
+    position: relative;
+    height: 130px;
+    background: linear-gradient(135deg, #7367f0, #9f8ffb);
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 10px 20px;
+    color: white;
+}
+
+.avatar {
+    position: absolute;
+    bottom: -30px;
+    left: 20px;
+    background-color: #2a2a2a;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-icon {
+    font-size: 30px;
+    color: #fff;
+}
+
+.btn-edit {
+    background-color: rgba(255, 255, 255, 0.3);
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-edit:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Formulario */
+form {
+    margin-top: 50px;
+}
+
+fieldset {
+    border: 1px solid #3f7a14;
+    margin-bottom: 25px;
+    padding: 20px;
+    border-radius: 6px;
+}
+
+legend {
+    font-weight: 700;
+    color: #3f7a14;
+    padding: 0 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    margin-top: 15px;
+    font-weight: 600;
+    color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    font-size: 14px;
+    resize: vertical;
+}
+
+textarea {
+    font-family: Arial, sans-serif;
+}
+
+/* Botón de guardar */
+.btn-submit {
+    background-color: #3f7a14;
+    color: white;
+    font-weight: 700;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+.btn-submit:hover {
+    background-color: #2e5a0d;
+}
